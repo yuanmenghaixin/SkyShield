@@ -1,12 +1,12 @@
 package com.tdpark.sky.shield.dto;
 
-import com.tdpark.sky.shield.annotation.NotNull;
+import com.tdpark.sky.shield.annotation.CheckParams;
 
 public class RemoveColumnRequestDto {
 
-    @NotNull(desc="表格编号不能为空")
+    @CheckParams(name="表格编号",notNull=true,minLength=32,maxLength=32)
     private String tableNo;
-    @NotNull(desc="表格列编号不能为空")
+    @CheckParams(name="表格列编号",notNull=true,minLength=32,maxLength=32)
     private String columnKey;
     public String getTableNo() {
         return tableNo;

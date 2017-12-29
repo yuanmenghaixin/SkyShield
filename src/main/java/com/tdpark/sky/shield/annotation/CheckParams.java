@@ -7,6 +7,12 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD})
-public @interface NotNull {
-    String desc();
+public @interface CheckParams {
+    String name();
+    boolean notNull() default false;
+    int minLength() default 0;
+    int maxLength() default Integer.MAX_VALUE;
+    long min() default Long.MIN_VALUE;
+    long max() default Long.MAX_VALUE;
+    
 }

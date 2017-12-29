@@ -53,7 +53,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping("register")
     public Object register(RegisterRequestDto dto,HttpServletRequest request,HttpServletResponse response) throws IllegalArgumentException, IllegalAccessException, NoSuchAlgorithmException{
-        ParamUtils.checkBlank(dto);
+        ParamUtils.checkParams(dto);
         long randomTimestamp = 0L;
         long now = System.currentTimeMillis();
         try {
@@ -87,7 +87,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping("login")
     public Object login(LoginRequestDto dto,HttpServletRequest request,HttpServletResponse response) throws Exception{
-        ParamUtils.checkBlank(dto);
+        ParamUtils.checkParams(dto);
         String ssToken = MD5Utils.toMD5(dto.getUserName() + Constants.MD5_KEY);
         UserAuth userAuth = userAuthDao.selectBySsToken(ssToken);
         SSExceptionUtils.check(userAuth != null, ErrorEnum.USER_NOT_EXIST);

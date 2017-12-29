@@ -1,12 +1,12 @@
 package com.tdpark.sky.shield.dto;
 
-import com.tdpark.sky.shield.annotation.NotNull;
+import com.tdpark.sky.shield.annotation.CheckParams;
 
 public class TableRequestDto {
 
-    @NotNull(desc="表格名称不能为空")
+    @CheckParams(name="表格名称",notNull=true,minLength=1,maxLength=32)
     private String tableName;
-    @NotNull(desc="表格描述不能为空")
+    @CheckParams(name="表格描述",notNull=true,minLength=1,maxLength=128)
     private String tableDesc;
     public String getTableName() {
         return tableName;

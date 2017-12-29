@@ -53,7 +53,7 @@ public class ColumnController {
     @Auth
     public Object edit(String params,HttpServletRequest request,HttpServletResponse response) throws IllegalArgumentException, IllegalAccessException, NoSuchAlgorithmException, JsonParseException, JsonMappingException, IOException{
         EditColumnRequestDto dto = new ObjectMapper().readValue(params, EditColumnRequestDto.class);
-        ParamUtils.checkBlank(dto);
+        ParamUtils.checkParams(dto);
         String ssToken = HttpRequestUtils.ssToken(request);
         HttpCookiesUtils.resetAuthCookies(request, response);
         TableInfo tableInfo = tableInfoDao.selectByTableNo(ssToken, dto.getTableNo());
@@ -69,7 +69,7 @@ public class ColumnController {
         List<TableColumn> insert = new ArrayList<TableColumn>();
         List<ColumnRequestDto> list = dto.getColumns();
         for(ColumnRequestDto d : list){
-            ParamUtils.checkBlank(d);
+            ParamUtils.checkParams(d);
             if(!exist.containsKey(d.getColumnKey())){
                 TableColumn c = new TableColumn();
                 c.setSsToken(ssToken);
@@ -100,7 +100,7 @@ public class ColumnController {
     @RequestMapping("remove")
     @Auth
     public Object remove(RemoveColumnRequestDto dto,HttpServletRequest request,HttpServletResponse response) throws IllegalArgumentException, IllegalAccessException, NoSuchAlgorithmException{
-        ParamUtils.checkBlank(dto);
+        ParamUtils.checkParams(dto);
         String ssToken = HttpRequestUtils.ssToken(request);
         HttpCookiesUtils.resetAuthCookies(request, response);
         tableColumnDao.deleteByColumnKey(ssToken, dto.getTableNo(), dto.getColumnKey());

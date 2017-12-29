@@ -1,16 +1,16 @@
 package com.tdpark.sky.shield.dto;
 
-import com.tdpark.sky.shield.annotation.NotNull;
+import com.tdpark.sky.shield.annotation.CheckParams;
 
 public class RowRequestDto {
     
-    @NotNull(desc="数据ID不能为空")
+    @CheckParams(name="数据ID",notNull=true)
     private Long id;
-    @NotNull(desc="数据行号不能为空")
+    @CheckParams(name="表格行编号",notNull=true)
     private Long rowNo;
-    @NotNull(desc="列编号不能为空")
+    @CheckParams(name="表格列编号",notNull=true,minLength=32,maxLength=32)
     private String columnKey;
-    @NotNull(desc="数据不能为空")
+    @CheckParams(name="数据",notNull=true)
     private String columnValue;
     public Long getId() {
         return id;

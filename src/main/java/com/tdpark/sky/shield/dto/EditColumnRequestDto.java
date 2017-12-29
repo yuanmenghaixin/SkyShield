@@ -2,13 +2,13 @@ package com.tdpark.sky.shield.dto;
 
 import java.util.List;
 
-import com.tdpark.sky.shield.annotation.NotNull;
+import com.tdpark.sky.shield.annotation.CheckParams;
 
 public class EditColumnRequestDto {
 
-    @NotNull(desc="表格编号不能为空")
+    @CheckParams(name="表格编号",notNull=true,minLength=32,maxLength=32)
     private String tableNo;
-    @NotNull(desc="表格列信息不能为空")
+    @CheckParams(name="表格列信息",notNull=true)
     private List<ColumnRequestDto> columns;
     public String getTableNo() {
         return tableNo;

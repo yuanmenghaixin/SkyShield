@@ -1,11 +1,12 @@
 package com.tdpark.sky.shield.dto;
 
-import com.tdpark.sky.shield.annotation.NotNull;
+import com.tdpark.sky.shield.annotation.CheckParams;
 
 public class ShowRowRequestDto {
-    @NotNull(desc = "表格编号不能为空")
+
+    @CheckParams(name="表格编号",notNull=true,minLength=32,maxLength=32)
     private String tableNo;
-    @NotNull(desc = "表格行编号不能为空")
+    @CheckParams(name="表格行编号",notNull=true)
     private long rowNo;
     public String getTableNo() {
         return tableNo;

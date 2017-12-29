@@ -20,7 +20,7 @@ public interface UserInfoDao {
         @Result(property = "ssToken", column = "ss_token"),
         @Result(property = "phoneNo", column = "phone_no"),
         @Result(property = "publicKey", column = "public_key"),
-        @Result(property = "privateKey", column = "privateKey"),
+        @Result(property = "privateKey", column = "private_key"),
         @Result(property = "gmtCreated", column = "gmt_created"),
         @Result(property = "gmtModified", column = "gmt_modified")
     })

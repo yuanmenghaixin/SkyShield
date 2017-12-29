@@ -53,14 +53,14 @@ public class RowController {
     @Auth
     public Object edit(String params,HttpServletRequest request,HttpServletResponse response) throws IllegalArgumentException, IllegalAccessException, NoSuchAlgorithmException, JsonParseException, JsonMappingException, IOException{
         AddRowRequestDto dto = new ObjectMapper().readValue(params, AddRowRequestDto.class);
-        ParamUtils.checkBlank(dto);
+        ParamUtils.checkParams(dto);
         String ssToken = HttpRequestUtils.ssToken(request);
         HttpCookiesUtils.resetAuthCookies(request, response);
         long rowNo = System.currentTimeMillis();
         String tableNo = dto.getTableNo();
         List<RowRequestDto> row = dto.getRow();
         for(RowRequestDto r:row){
-            ParamUtils.checkBlank(r);
+            ParamUtils.checkParams(r);
         }
         for(RowRequestDto r:row){
             if(r.getId() == null || r.getId().longValue() <= 0){
@@ -89,7 +89,7 @@ public class RowController {
     @RequestMapping("remove")
     @Auth
     public Object remove(RemoveRowRequestDto dto,HttpServletRequest request,HttpServletResponse response) throws IllegalArgumentException, IllegalAccessException, NoSuchAlgorithmException{
-        ParamUtils.checkBlank(dto);
+        ParamUtils.checkParams(dto);
         String ssToken = HttpRequestUtils.ssToken(request);
         HttpCookiesUtils.resetAuthCookies(request, response);
         String tableNo = dto.getTableNo();
@@ -101,7 +101,7 @@ public class RowController {
     @RequestMapping("show")
     @Auth
     public Object show(ShowRowRequestDto dto,HttpServletRequest request,HttpServletResponse response) throws IllegalArgumentException, IllegalAccessException, NoSuchAlgorithmException{
-        ParamUtils.checkBlank(dto);
+        ParamUtils.checkParams(dto);
         String ssToken = HttpRequestUtils.ssToken(request);
         HttpCookiesUtils.resetAuthCookies(request, response);
         String tableNo = dto.getTableNo();

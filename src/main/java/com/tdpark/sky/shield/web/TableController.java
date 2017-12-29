@@ -48,7 +48,7 @@ public class TableController {
     @RequestMapping("add")
     @Auth
     public Object add(TableRequestDto dto,HttpServletRequest request,HttpServletResponse response) throws IllegalArgumentException, IllegalAccessException, NoSuchAlgorithmException{
-        ParamUtils.checkBlank(dto);
+        ParamUtils.checkParams(dto);
         String ssToken = HttpRequestUtils.ssToken(request);
         TableInfo tableInfo = new TableInfo();
         tableInfo.setSsToken(ssToken);

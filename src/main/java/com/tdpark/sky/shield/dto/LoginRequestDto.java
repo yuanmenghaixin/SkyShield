@@ -1,12 +1,12 @@
 package com.tdpark.sky.shield.dto;
 
-import com.tdpark.sky.shield.annotation.NotNull;
+import com.tdpark.sky.shield.annotation.CheckParams;
 
 public class LoginRequestDto {
 
-    @NotNull(desc = "用户名不能为空")
+    @CheckParams(name="用户名",notNull=true)
     private String userName;
-    @NotNull(desc = "密码不能为空")
+    @CheckParams(name="密码",notNull=true)
     private String passWord;
     public String getUserName() {
         return userName;

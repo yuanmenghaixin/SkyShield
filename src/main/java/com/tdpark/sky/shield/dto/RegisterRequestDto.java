@@ -1,20 +1,20 @@
 package com.tdpark.sky.shield.dto;
 
-import com.tdpark.sky.shield.annotation.NotNull;
+import com.tdpark.sky.shield.annotation.CheckParams;
 
 public class RegisterRequestDto {
 
-    @NotNull(desc="混淆后的公钥不能为空")
+    @CheckParams(name="混淆后的公钥",notNull=true,minLength=1,maxLength=512)
     private String publicKey;
-    @NotNull(desc="混淆后的私钥不能为空")
+    @CheckParams(name="混淆后的私钥",notNull=true,minLength=1,maxLength=1024)
     private String privateKey;
-    @NotNull(desc="用户名不能为空")
+    @CheckParams(name="用户名",notNull=true,minLength=1,maxLength=32)
     private String userName;
-    @NotNull(desc="密码不能为空")
+    @CheckParams(name="密码",notNull=true,minLength=1,maxLength=32)
     private String passWord;
-    @NotNull(desc="确认密码不能为空")
+    @CheckParams(name="确认密码",notNull=true)
     private String comfWord;
-    @NotNull(desc="验证码不能为空")
+    @CheckParams(name="验证码",notNull=true)
     private String randomCode;
     public String getPublicKey() {
         return publicKey;

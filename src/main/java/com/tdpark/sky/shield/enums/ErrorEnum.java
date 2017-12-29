@@ -12,7 +12,11 @@ public enum ErrorEnum {
     RANMOD_CODE_EXPIRATION("20005","验证码已过期,请重新刷新!"),
     RANMOD_CODE_ERROR("20006","验证码错误!"),
     
-    FIELD_BE_NULL("88888","缺少必要字段!"),
+    FIELD_BE_NULL("80001","%s不能为空!"),
+    LENGTH_MIN_ILL("80002","%s长度不能小于%s位!"),
+    LENGTH_MAX_ILL("80003","%s长度不能大于%s位!"),
+    VALUE_MIN_ILL("80004","%s不能小于%s!"),
+    VALUE_MAX_ILL("80005","%s不能大于%s!"),
     SYS_EXCEPTION("99999","系统异常!"),
     ;
     private String code;
